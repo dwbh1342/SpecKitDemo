@@ -42,5 +42,5 @@ python -m shelf year --json
 ## Automated suite
 
 ```bash
-python -m unittest discover -s tests -v       # all acceptance scenarios (SC-003)
+python -m unittest -v                         # all acceptance scenarios (SC-003)
 ```

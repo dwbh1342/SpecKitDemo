@@ -21,9 +21,9 @@ description: "Task list for Reading List Tracker"
 
 ## Phase 1: Setup (Shared Infrastructure)
 
-- [ ] T001 Create package skeleton `src/shelf/__init__.py` and `src/shelf/__main__.py` per plan.md structure
-- [ ] T002 [P] Create `tests/__init__.py` and a test helper that points `SHELF_FILE` at a temp directory in `tests/helpers.py`
-- [ ] T003 [P] Add Python entries (`__pycache__/`, `*.pyc`, `.shelf.json`) to `.gitignore`
+- [x] T001 Create package skeleton `src/shelf/__init__.py` and `src/shelf/__main__.py` per plan.md structure
+- [x] T002 [P] Create `tests/__init__.py` and a test helper that points `SHELF_FILE` at a temp directory in `tests/helpers.py`
+- [x] T003 [P] Add Python entries (`__pycache__/`, `*.pyc`, `.shelf.json`) to `.gitignore`
 
 ---
 
@@ -31,10 +31,10 @@ description: "Task list for Reading List Tracker"
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T004 [P] Create `Book` dataclass and status constants in `src/shelf/models.py` per data-model.md
-- [ ] T005 Write store tests (missing file → empty list, round-trip, corrupted file raises and is left untouched) in `tests/test_store.py` — confirm they FAIL
-- [ ] T006 Implement `load()` / `save()` with atomic `os.replace` and `StoreError` in `src/shelf/store.py` (research R1, R3, R4; FR-011, FR-012)
-- [ ] T007 Create argparse entry point with `add`/`list`/`finish`/`year` subparsers stubbed and the stderr/exit-code helper in `src/shelf/cli.py` (contracts/cli.md exit codes)
+- [x] T004 [P] Create `Book` dataclass and status constants in `src/shelf/models.py` per data-model.md
+- [x] T005 Write store tests (missing file → empty list, round-trip, corrupted file raises and is left untouched) in `tests/test_store.py` — confirm they FAIL
+- [x] T006 Implement `load()` / `save()` with atomic `os.replace` and `StoreError` in `src/shelf/store.py` (research R1, R3, R4; FR-011, FR-012)
+- [x] T007 Create argparse entry point with `add`/`list`/`finish`/`year` subparsers stubbed and the stderr/exit-code helper in `src/shelf/cli.py` (contracts/cli.md exit codes)
 
 **Checkpoint**: Foundation ready — user story work can begin
 
@@ -48,14 +48,14 @@ description: "Task list for Reading List Tracker"
 
 ### Tests for User Story 1 ⚠️ write first, confirm they FAIL
 
-- [ ] T008 [P] [US1] Service tests for US1/AC1–AC4 and FR-003 (empty title/author) in `tests/test_service.py`
-- [ ] T009 [P] [US1] CLI tests for `add` and `list` text output, `--json`, and exit codes in `tests/test_cli.py`
+- [x] T008 [P] [US1] Service tests for US1/AC1–AC4 and FR-003 (empty title/author) in `tests/test_service.py`
+- [x] T009 [P] [US1] CLI tests for `add` and `list` text output, `--json`, and exit codes in `tests/test_cli.py`
 
 ### Implementation for User Story 1
 
-- [ ] T010 [US1] Implement `add_book()` with trimming, validation, case-insensitive duplicate check, and `next_id` in `src/shelf/service.py` (FR-001–FR-004)
-- [ ] T011 [US1] Implement `list_books()` preserving insertion order in `src/shelf/service.py` (FR-005)
-- [ ] T012 [US1] Wire `add` and `list` subcommands with text and `--json` output in `src/shelf/cli.py` (FR-010)
+- [x] T010 [US1] Implement `add_book()` with trimming, validation, case-insensitive duplicate check, and `next_id` in `src/shelf/service.py` (FR-001–FR-004)
+- [x] T011 [US1] Implement `list_books()` preserving insertion order in `src/shelf/service.py` (FR-005)
+- [x] T012 [US1] Wire `add` and `list` subcommands with text and `--json` output in `src/shelf/cli.py` (FR-010)
 
 **Checkpoint**: US1 fully functional — this is the MVP
 
@@ -69,14 +69,14 @@ description: "Task list for Reading List Tracker"
 
 ### Tests for User Story 2 ⚠️ write first, confirm they FAIL
 
-- [ ] T013 [P] [US2] Service tests for US2/AC1–AC4 in `tests/test_service.py`
-- [ ] T014 [P] [US2] CLI tests for `finish` and `list --unread` in `tests/test_cli.py`
+- [x] T013 [P] [US2] Service tests for US2/AC1–AC4 in `tests/test_service.py`
+- [x] T014 [P] [US2] CLI tests for `finish` and `list --unread` in `tests/test_cli.py`
 
 ### Implementation for User Story 2
 
-- [ ] T015 [US2] Implement `finish_book(book_id, today)` that never overwrites `finished_on` in `src/shelf/service.py` (FR-007, FR-008)
-- [ ] T016 [US2] Add `unread_only` filter to `list_books()` in `src/shelf/service.py` (FR-006)
-- [ ] T017 [US2] Wire `finish` subcommand and `list --unread` in `src/shelf/cli.py`
+- [x] T015 [US2] Implement `finish_book(book_id, today)` that never overwrites `finished_on` in `src/shelf/service.py` (FR-007, FR-008)
+- [x] T016 [US2] Add `unread_only` filter to `list_books()` in `src/shelf/service.py` (FR-006)
+- [x] T017 [US2] Wire `finish` subcommand and `list --unread` in `src/shelf/cli.py`
 
 **Checkpoint**: US1 and US2 both work independently
 
@@ -90,13 +90,13 @@ description: "Task list for Reading List Tracker"
 
 ### Tests for User Story 3 ⚠️ write first, confirm they FAIL
 
-- [ ] T018 [P] [US3] Service tests for US3/AC1–AC3 in `tests/test_service.py`
-- [ ] T019 [P] [US3] CLI tests for `year`, default year, and `--json` in `tests/test_cli.py`
+- [x] T018 [P] [US3] Service tests for US3/AC1–AC3 in `tests/test_service.py`
+- [x] T019 [P] [US3] CLI tests for `year`, default year, and `--json` in `tests/test_cli.py`
 
 ### Implementation for User Story 3
 
-- [ ] T020 [US3] Implement `year_summary(year)` sorted by `finished_on` in `src/shelf/service.py` (FR-009)
-- [ ] T021 [US3] Wire `year [YEAR]` subcommand defaulting to the current year in `src/shelf/cli.py`
+- [x] T020 [US3] Implement `year_summary(year)` sorted by `finished_on` in `src/shelf/service.py` (FR-009)
+- [x] T021 [US3] Wire `year [YEAR]` subcommand defaulting to the current year in `src/shelf/cli.py`
 
 **Checkpoint**: All user stories independently functional
 
@@ -104,9 +104,9 @@ description: "Task list for Reading List Tracker"
 
 ## Phase 6: Polish & Cross-Cutting Concerns
 
-- [ ] T022 [P] Add performance test: every command under 1 s with 1,000 books in `tests/test_perf.py` (SC-002)
-- [ ] T023 [P] Document install/usage in `README.md`
-- [ ] T024 Run every scenario in `specs/001-reading-list/quickstart.md` and the full `python -m unittest` suite
+- [x] T022 [P] Add performance test: every command under 1 s with 1,000 books in `tests/test_perf.py` (SC-002)
+- [x] T023 [P] Document install/usage in `README.md`
+- [x] T024 Run every scenario in `specs/001-reading-list/quickstart.md` and the full `python -m unittest` suite
 
 ---
 
