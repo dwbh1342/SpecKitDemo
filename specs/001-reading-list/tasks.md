@@ -154,3 +154,10 @@ Add US2, validate; add US3, validate; then Polish.
 
 - Commit after each phase checkpoint.
 - Every task cites the requirement it serves so `/speckit-analyze` and `/speckit-converge` can trace it.
+
+---
+
+## Phase 7: Convergence
+
+- [ ] T025 Raise `StoreError` (exit 1, file untouched) when the data file is valid JSON but not the expected shape, and add a test for it in `tests/test_store.py` per FR-012 (partial)
+- [ ] T026 Add `--json` to `add` returning the created Book, and a CLI test for it in `tests/test_cli.py` per FR-010 (partial)
