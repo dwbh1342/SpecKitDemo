@@ -31,6 +31,7 @@ def build_parser() -> argparse.ArgumentParser:
     a = sub.add_parser("add", help="add a book to your list")
     a.add_argument("title")
     a.add_argument("author")
+    a.add_argument("--json", action="store_true")
 
     ls = sub.add_parser("list", help="show your reading list")
     ls.add_argument("--unread", action="store_true", help="only books not yet finished")
@@ -55,7 +56,10 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "add":
             book = service.add_book(rl, args.title, args.author, today)
             store.save(rl)
-            print(f"Added #{book.id}: {book.title} — {book.author}")
+            if args.json:
+                _print_json(book.to_dict())
+            else:
+                print(f"Added #{book.id}: {book.title} — {book.author}")
 
         elif args.command == "list":
             books = service.list_books(rl, unread_only=args.unread)

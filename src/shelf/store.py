@@ -26,10 +26,13 @@ def load(path: Path | None = None) -> ReadingList:
         raw = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
         raise StoreError(f"cannot read {path}: {exc}") from exc
-    return ReadingList(
-        next_id=raw["next_id"],
-        books=[Book.from_dict(b) for b in raw["books"]],
-    )
+    try:
+        return ReadingList(
+            next_id=int(raw["next_id"]),
+            books=[Book.from_dict(b) for b in raw["books"]],
+        )
+    except (KeyError, TypeError, ValueError) as exc:
+        raise StoreError(f"{path} is not a valid Shelf data file") from exc
 
 
 def save(reading_list: ReadingList, path: Path | None = None) -> None:

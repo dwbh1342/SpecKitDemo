@@ -25,3 +25,10 @@ class StoreTests(TempShelfCase):
         with self.assertRaises(store.StoreError):
             store.load()
         self.assertEqual(self.data_file.read_text(encoding="utf-8"), "{not json")
+
+    def test_wrong_shape_raises_and_is_untouched(self):
+        for content in ("[]", '{"books": []}', '{"next_id": 1, "books": [{"title": "x"}]}'):
+            self.data_file.write_text(content, encoding="utf-8")
+            with self.assertRaises(store.StoreError):
+                store.load()
+            self.assertEqual(self.data_file.read_text(encoding="utf-8"), content)

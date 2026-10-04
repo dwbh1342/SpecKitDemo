@@ -30,6 +30,16 @@ class US1Cli(TempShelfCase):
         data = json.loads(self.run_cli("list", "--json").stdout)
         self.assertEqual(data[0]["title"], "Dune")
 
+    def test_add_json(self):
+        data = json.loads(self.run_cli("add", "Dune", "Frank Herbert", "--json").stdout)
+        self.assertEqual((data["id"], data["status"]), (1, "to-read"))
+
+    def test_bad_data_file_is_user_error(self):
+        self.data_file.write_text("[]", encoding="utf-8")
+        r = self.run_cli("list")
+        self.assertEqual(r.returncode, 1)
+        self.assertIn("not a valid Shelf data file", r.stderr)
+
     def test_usage_error_exit_2(self):
         self.assertEqual(self.run_cli("add", "only-title").returncode, 2)
 
